@@ -323,7 +323,7 @@ jobs:
         sed -i "s/${name2}/${re_name2}/g" sha256sums
         mv -f ${name1} ${re_name1}
         mv -f ${name2} ${re_name2}
-        mv -f sha256sums openwrt-${{ env.SOURCE }}.sha256sums
+        mv -f sha256sums openwrt-${{ env.SOURCE }}-n1.sha256sums
         ls -lh
         echo "status=success" >> $GITHUB_OUTPUT
 
@@ -342,6 +342,6 @@ jobs:
           - 编译时间：`${{ env.DATE }}`
           - 默认 IP：`10.10.10.1` 默认密码：`password`
           - 安装：`openwrt-install-amlogic`
-          - 升级：`openwrt-update-amlogic` 或 `openwrt-kernel`
+          - 升级：`openwrt-update-amlogic`
           - 当前使用版本:【编译前的最后一次➦[${{ env.SOURCE }}源码](${{ env.SOURCE_URL }})更新记录】
             ${{ env.VERSION_INFO }}

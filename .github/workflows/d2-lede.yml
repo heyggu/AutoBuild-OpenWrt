@@ -8,6 +8,7 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: configs/d2.config
   DIY_SCRIPT: scripts/diy/d2-lede.sh
+  COM_SCRIPT: scripts/common.sh
   TOOLCHAIN_TAG: Toolchain
   OPENWRT_RELEASE_TAG: Newifi_D2
   SOURCE: lede
@@ -239,9 +240,12 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE $OPENWRT_PATH/.config
         chmod +x $GITHUB_WORKSPACE/scripts/*.sh
         chmod +x $DIY_SCRIPT
+        chmod +x $COM_SCRIPT
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/scripts/common.sh
         $GITHUB_WORKSPACE/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/$COM_SCRIPT
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
 
     - name: 下载DL
       id: download

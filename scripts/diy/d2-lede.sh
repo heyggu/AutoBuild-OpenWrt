@@ -9,9 +9,6 @@ echo "src/gz openwrt_kiddin9 https://op.supes.top/packages/mipsel_24kc" >> packa
 
 # argon主题
 find . -maxdepth 4 -iname "*argon*" -type d | xargs rm -rf
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
-git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
+git clone -b 18.06 --depth=1 https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config
 sed -i 's/"Argon 主题设置"/"主题设置"/g' `grep "Argon 主题设置" -rl ./`
-
-./scripts/feeds update -a
-./scripts/feeds install -a

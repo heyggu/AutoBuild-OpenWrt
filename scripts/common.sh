@@ -34,13 +34,13 @@ find . -maxdepth 4 -iname "*wrtbwmon*" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*xray*" -type d | xargs rm -rf
 
 # 添加package
-git clone https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
-git clone https://github.com/sbwml/luci-app-mosdns.git package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata.git package/geodata
-git clone https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
-git clone https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
-git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
-git clone https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
+git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
+git clone --depth=1 https://github.com/sbwml/luci-app-mosdns.git package/mosdns
+git clone --depth=1 https://github.com/sbwml/v2ray-geodata.git package/geodata
+git clone --depth=1 https://github.com/sirpdboy/luci-app-advanced.git package/luci-app-advanced
+git clone --depth=1 https://github.com/sirpdboy/luci-app-autotimeset.git package/luci-app-autotimeset
+git clone --depth=1 https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+git clone --depth=1 https://github.com/zzsj0928/luci-app-pushbot.git package/luci-app-pushbot
 svn co https://github.com/coolsnowwolf/packages/trunk/net/miniupnpd package/miniupnpd
 svn co https://github.com/kenzok8/small-package/trunk/luci-app-onliner package/luci-app-onliner
 svn co https://github.com/kenzok8/small-package/trunk/luci-app-wrtbwmon package/luci-app-wrtbwmon
@@ -58,6 +58,8 @@ svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-turboacc packa
 svn co https://github.com/kiddin9/openwrt-packages/trunk/luci-app-verysync package/luci-app-verysync
 svn co https://github.com/kiddin9/openwrt-packages/trunk/netdata package/netdata
 svn co https://github.com/kiddin9/openwrt-packages/trunk/verysync package/verysync
+svn co https://github.com/linkease/istore-ui/trunk/app-store-ui package/app-store-ui
+svn co https://github.com/linkease/istore/trunk/luci package/istore
 svn co https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto package/luci-app-ddnsto
 svn co https://github.com/linkease/nas-packages/trunk/network/services/ddnsto package/ddnsto
 svn co https://github.com/lisaac/luci-app-dockerman/trunk/applications/luci-app-dockerman package/luci-app-dockerman

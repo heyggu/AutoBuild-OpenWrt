@@ -131,6 +131,7 @@ sed -i 's/"NFS 管理"/"NFS管理"/g' `grep "NFS 管理" -rl ./`
 sed -i 's/"Rclone"/"网盘挂载"/g' `grep "Rclone" -rl ./`
 sed -i 's/"SQM QoS"/"SQM管理"/g' `grep "SQM QoS" -rl ./`
 sed -i 's/"SQM 队列管理"/"SQM管理"/g' `grep "SQM 队列管理" -rl ./`
+sed -i 's/"Socat"/"端口转发"/g' `grep "Socat" -rl ./`
 sed -i 's/"SoftEther VPN 服务器"/"SoftEther"/g' `grep "SoftEther VPN 服务器" -rl ./`
 sed -i 's/"TTYD 终端"/"终端"/g' `grep "TTYD 终端" -rl ./`
 sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' `grep "Turbo ACC 网络加速" -rl ./`

@@ -310,7 +310,6 @@ jobs:
         KERNEL_VERSION_NAME: 5.4.220
         KERNEL_AUTO_LATEST: true
         WHOAMI: v8040
-        DISTRIB_REVISION: R$(date +%Y.%m.%d) by v8040
 
     - name: 重整理文件
       id: reorganize

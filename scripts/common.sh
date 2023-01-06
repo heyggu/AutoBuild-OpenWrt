@@ -1,37 +1,36 @@
 #!/bin/bash
 
 # 移除package
-find . -maxdepth 4 -iname "*adguardhome*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*advanced*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*adguardhome" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*advanced" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*alist" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*aliyundrive*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*amlogic*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*autotimeset*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*bypass*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*ddnsto*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*dnsproxy*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*dockerman*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*eqos*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*miniupnpd*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*mosdns*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*music*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*netdata*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*onliner*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*openclash*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*passwall*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*pushbot*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*amlogic" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*autotimeset" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*bypass" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*ddnsto" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*dockerman" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*eqos" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*mosdns" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*netdata" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*onliner" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*openclash" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*passwall" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*pushbot" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*qbittorrent*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*serverchan*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*serverchan" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*shadowsocks*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*speedtest*" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*ssr*" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*trojan*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*turboacc*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*turboacc" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*unblock*music*" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*v2ray*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*verysync*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*vssr*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*wizard*" -type d | xargs rm -rf
-find . -maxdepth 4 -iname "*wrtbwmon*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*verysync" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*wizard" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "*wrtbwmon" -type d | xargs rm -rf
 find . -maxdepth 4 -iname "*xray*" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "dnsproxy" -type d | xargs rm -rf
+find . -maxdepth 4 -iname "miniupnpd" -type d | xargs rm -rf
 
 # 添加package
 git clone --depth=1 https://github.com/UnblockNeteaseMusic/luci-app-unblockneteasemusic.git package/luci-app-unblockneteasemusic
@@ -68,6 +67,11 @@ svn co https://github.com/messense/aliyundrive-fuse/trunk/openwrt/luci-app-aliyu
 svn co https://github.com/ophub/luci-app-amlogic/trunk/luci-app-amlogic package/luci-app-amlogic
 svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
+# alist
+rm -rf feeds/packages/lang/golang
+svn export https://github.com/sbwml/packages_lang_golang/branches/19.x feeds/packages/lang/golang
+git clone --depth=1 https://github.com/sbwml/luci-app-alist.git package/alist
+
 # samba解除root限制
 sed -i 's/invalid users = root/#&/g' feeds/packages/net/samba4/files/smb.conf.template
 
@@ -101,7 +105,7 @@ find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_U
 find package/*/ -maxdepth 2 -path "*/Makefile" | xargs -i sed -i 's/PKG_SOURCE_URL:=\@GHCODELOAD/PKG_SOURCE_URL:=https:\/\/codeload\.github\.com/g' {}
 
 # 编译 po2lmo (如果有po2lmo可跳过)
-pushd luci-app-openclash/tools/po2lmo
+pushd package/luci-app-openclash/tools/po2lmo
 make && sudo make install
 popd
 
@@ -120,6 +124,7 @@ sed -i 's|admin/network|admin/nlbw|g' package/luci-app-wrtbwmon/root/usr/share/l
 sed -i 's|admin/services|admin/|g' feeds/luci/applications/luci-app-nlbwmon/root/usr/share/luci/menu.d/*.json
 
 # 修改插件名字
+sed -i 's/"Alist 文件列表"/"Alist网盘"/g' `grep "Alist 文件列表" -rl ./`
 sed -i 's/"Argon 主题设置"/"主题设置"/g' `grep "Argon 主题设置" -rl ./`
 sed -i 's/"Aria2 配置"/"Aria2设置"/g' `grep "Aria2 配置" -rl ./`
 sed -i 's/"Aria2"/"Aria2设置"/g' `grep "Aria2" -rl ./`

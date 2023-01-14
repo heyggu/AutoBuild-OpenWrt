@@ -2,6 +2,7 @@ name: Build immortalwrt for D2
 
 on:
   workflow_dispatch:
+  permissions: write-all
 
 env:
   SOURCE_URL: https://github.com/immortalwrt/immortalwrt
